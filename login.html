@@ -8,6 +8,7 @@
     <title>login</title>
 </head>
 <body>
+    <script src="script.js"></script>
     <div class="center">
         <form method="post">
             <h2>Den firem přihlášení</h2>
@@ -20,17 +21,21 @@
                 <input type = "text" placeholder="Příjmení" required>
             </div>
             <div class="txt_field">
+                <label>Zadejte Váš E-mail:</label>
+                <input type = "text" placeholder="E-mail" required>
+            </div>
+            <div class="txt_field">
                 <label>Vybraný obor:</label>
-                <input type = "text" placeholder="Obor" required disabled>
+                <input type = "text" placeholder="Obor" required disabled id="selected" value = "">
             </div>
 
             <div class = "dropdown">
                 <input type="button" value="Vybrat obor" class="dropbtn">
                 <div class="dropdown_content">
-                    <input type="button" value="Informační technologie" id="">
-                    <input type="button" value="Sociální činnost" id="">
-                    <input type="button" value="Kybernetika" id ="">
-                    <input type="button" value="Ekonomika" id="">
+                    <input type="button" onclick="selectItem(this.id)" value="Informační technologie" id="V">
+                    <input type="button" onclick="selectItem(this.id)" value="Sociální činnost" id="S">
+                    <input type="button" onclick="selectItem(this.id)" value="Kybernetika" id ="KR">
+                    <input type="button" onclick="selectItem(this.id)" value="Ekonomika" id="E">
                 </div>
             </div>
 
