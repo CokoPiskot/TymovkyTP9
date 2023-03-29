@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <div class="center">
+        <form method="post">
+            <h2>Den firem přihlášení</h2>
+            <div class="txt_field">
+                <label>Zadejte Vaše křestní jméno:</label>
+                <input type = "text" placeholder="Jméno" required>
+            </div>
+            <div class="txt_field">
+                <label>Zadejte Vaše příjmení:</label>
+                <input type = "text" placeholder="Příjmení" required>
+            </div>
+            <div class="txt_field">
+                <label>Vybraný obor:</label>
+                <input type = "text" placeholder="Obor" required disabled>
+            </div>
+
+            <div class = "dropdown">
+                <input type="button" value="Vybrat obor" class="dropbtn">
+                <div class="dropdown_content">
+                    <input type="button" value="Informační technologie" id="">
+                    <input type="button" value="Sociální činnost" id="">
+                    <input type="button" value="Kybernetika" id ="">
+                    <input type="button" value="Ekonomika" id="">
+                </div>
+            </div>
+
+            <div>
+                <input type="button" value="Přihlásit se" class="login_btn" onclick=location.href="main.html">
+            </div>
+    </div>
+
+
+    <div class="footer">
+        <p>FOOTER</p>
+    </div>
+
+</body>
+</html>
