@@ -22,7 +22,7 @@ USE `<cislodb>` ;
 -- Table `<cislodb>`.`Blok`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `<cislodb>`.`Blok` (
-  `idBlok` INT NOT NULL,
+  `idBlok` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idBlok`))
 ENGINE = InnoDB;
 
@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 -- Table `<cislodb>`.`Student`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `<cislodb>`.`Student` (
-  `idStudent` INT NOT NULL,
+  `idStudent` INT NOT NULL AUTO_INCREMENT,
   `krestniJmeno` VARCHAR(45) NOT NULL,
   `prijmeni` VARCHAR(45) NOT NULL,
   `e-mail` VARCHAR(45) NOT NULL,
@@ -52,7 +52,7 @@ ENGINE = InnoDB;
 -- Table `<cislodb>`.`Ucebna`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `<cislodb>`.`Ucebna` (
-  `idUcebna` INT NOT NULL,
+  `idUcebna` INT NOT NULL AUTO_INCREMENT,
   `cisloUcebny` VARCHAR(45) NOT NULL,
   `kapacity` INT NOT NULL,
   `vybavení` VARCHAR(45) NULL,
@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 -- Table `<cislodb>`.`Firma`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `<cislodb>`.`Firma` (
-  `idFirma` INT NOT NULL,
+  `idFirma` INT NOT NULL AUTO_INCREMENT,
   `nazev` VARCHAR(45) NOT NULL,
   `potřeby` VARCHAR(45) NOT NULL,
   `obory` VARCHAR(45) NOT NULL,
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 -- Table `<cislodb>`.`Firma_has_Blok`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `<cislodb>`.`Firma_has_Blok` (
-  `Firma_idFirma` INT NOT NULL,
+  `Firma_idFirma` INT NOT NULL AUTO_INCREMENT,
   `Blok_idBlok` INT NOT NULL,
   `hodina` INT NULL,
   PRIMARY KEY (`Firma_idFirma`, `Blok_idBlok`),
