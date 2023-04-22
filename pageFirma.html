@@ -29,11 +29,15 @@
                 <label>O firmě:</label>
                 <input type = "text" placeholder="Informace o firmě" required>
             </div>
-            <div class="txt_field">
-                <label>Potřeby firmy:</label>
-                <input type = "text" placeholder="např. robotická ruka">
+            <div class = "dropdown">
+                <input type="button" value="Vybrat potřeby" class="dropbtn">
+                <div class="dropdown_content">
+                    <label for="ruka">Robotická ruka</label> <input type="checkbox" id="ruka"> <br>
+                    <label for="projektor">Projektor</label> <input type="checkbox" id="projektor"> <br>
+                    <label for="audio">Ozvučení</label> <input type="checkbox" id="audio"> <br>
+                    
+                </div>
             </div>
-
             <div class = "dropdown">
                 <input type="button" value="Vybrat obor" class="dropbtn">
                 <div class="dropdown_content">
