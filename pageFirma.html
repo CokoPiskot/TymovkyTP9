@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="pageFirma.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminPanel</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <div class = "sidebar">
+            <input type="button" value="Zobrazit firmy" class="side_button" href="main.php">
+            <input type="button" value="Bloky firem" class="side_button">
+            <input type="button" value="Přidat firmu" class="side_button" href="pageFirma.html">
+    </div>
+    <div class="center">
+        <form method="post">
+            <h2>Přidání firmy</h2>
+            <div class="txt_field">
+                <label>Zadejte název firmy:</label>
+                <input type = "text" placeholder="Název firmy" required>
+            </div>
+            <div class="txt_field">
+                <label>Název prezentace:</label>
+                <input type = "text" placeholder="Příjmení" required>
+            </div>
+            <div class="txt_field">
+                <label>O firmě:</label>
+                <input type = "text" placeholder="Informace o firmě" required>
+            </div>
+            <div class="txt_field">
+                <label>Potřeby firmy:</label>
+                <input type = "text" placeholder="např. robotická ruka">
+            </div>
+
+            <div class = "dropdown">
+                <input type="button" value="Vybrat obor" class="dropbtn">
+                <div class="dropdown_content">
+                    <label for="V">Informační technologie</label> <input type="checkbox" id="V"> <br>
+                    <label for="S">Sociální činnost</label> <input type="checkbox" id="S">
+                    
+                </div>
+            </div>
+            <div>
+                <input type="button" value="Přidat" class="login_btn" onclick=location.href="">
+            </div>
+    </div>
+
+</body>
+</html>
