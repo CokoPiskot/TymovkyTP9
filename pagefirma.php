@@ -5,23 +5,23 @@
 
 
 
-    $input1 = $_POST["nazevFirmy"];
-    $input2 = $_POST["nazevPrezentace"];
-    $input3 = $_POST["oFirme"];
+    $input1 = isset($_POST["nazevFirmy"]) ? $_POST["nazevFirmy"] : "";
+    $input2 = isset($_POST["nazevPrezentace"]) ? $_POST["nazevPrezentace"] : "";
+    $input3 = isset($_POST["oFirme"]) ? $_POST["oFirme"] : "";
 
-    $sql = "INSERT INTO Firma (idFirma, nazev, Ucebna_idUcebna, nazevPrezentace, oFirme) VALUES (1, '$input1', 60, '$input2', '$input3')";
+    $id = rand(100, 999);
+
+    $sql = "INSERT INTO Firma (idFirma, nazev, Ucebna_idUcebna, nazevPrezentace, oFirme) VALUES ($id, '$input1', 58, '$input2', '$input3')";
 
     echo $sql;
 
-    $query = $connect -> query($sql);
+    $query = $connect->query($sql);
 
+    echo $input1;
+    echo $input2;
+    echo $input3;
 
-
-    echo $_POST["nazevFirmy"];
-    echo $_POST["nazevPrezentace"];
-    echo $_POST["oFirme"];
-
-    $connect -> close();
+    $connect->close();
 
 ?>
 
