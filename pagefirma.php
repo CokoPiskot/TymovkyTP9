@@ -20,6 +20,11 @@
     echo $input1;
     echo $input2;
     echo $input3;
+    if(isset($_POST['potreby'])){
+        foreach($_POST['potreby'] as $potreba){
+            echo($potreba);
+        }
+    }
 
     $connect->close();
 
@@ -60,9 +65,9 @@
             <div class = "dropdown">
                 <input type="button" value="Vybrat potřeby" class="dropbtn">
                 <div class="dropdown_content">
-                    <label for="ruka">Robotická ruka</label> <input type="checkbox" id="ruka"> <br>
-                    <label for="projektor">Projektor</label> <input type="checkbox" id="projektor"> <br>
-                    <label for="audio">Ozvučení</label> <input type="checkbox" id="audio"> <br>
+                    <label for="ruka">Robotická ruka</label> <input type="checkbox" id="ruka" name="potreby[0]" value="ruka"> <br>
+                    <label for="projektor">Projektor</label> <input type="checkbox" id="projektor" name="potreby[1]" value="projektor"> <br>
+                    <label for="audio">Ozvučení</label> <input type="checkbox" id="audio" name="potreby[2]" value="audio"> <br>
                     
                 </div>
             </div>
