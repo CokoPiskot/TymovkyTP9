@@ -1,21 +1,17 @@
 <?php
 session_start();
 
-// Pokud byl formulář odeslán
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // Získání přihlašovacích údajů z formuláře
   $login = $_POST['username'];
   $heslo = $_POST['password'];
 
-  // Porovnání přihlašovacích údajů s uloženými údaji v databázi nebo souboru
   if ($login == 'admin' && $heslo == '123') {
-    // Vytvoření relace pro přihlášeného uživatele
     $_SESSION['username'] = $login;
-    // Přesměrování na hlavní stránku
+
     header('Location: pagefirma.php');
     exit();
   } else {
-    // Zobrazení chybové zprávy
+
     $errorMessage = '<p style="color:red">Chybné přihlašovací údaje.</p>';
 
   }
