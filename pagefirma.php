@@ -6,25 +6,65 @@
 
 
     $input1 = isset($_POST["nazevFirmy"]) ? $_POST["nazevFirmy"] : "";
-    $input2 = isset($_POST["nazevPrezentace"]) ? $_POST["nazevPrezentace"] : "";
-    $input3 = isset($_POST["oFirme"]) ? $_POST["oFirme"] : "";
+    $input2 = isset($_POST["název_prezentace"]) ? $_POST["název_prezentace"] : "";
+    $input3 = isset($_POST["o_firmě"]) ? $_POST["o_firmě"] : "";
 
-    $id = rand(100, 999);
+    $sql = "INSERT INTO Firma (nazev, název_prezentace, o_firmě) VALUES ('$input1', '$input2', '$input3')";
 
-    $sql = "INSERT INTO Firma (idFirma, nazev, Ucebna_idUcebna, nazevPrezentace, oFirme) VALUES ($id, '$input1', 58, '$input2', '$input3')";
 
     echo $sql;
 
-    $query = $connect->query($sql);
+    if (isset($_POST["nazevFirmy"])) {
+        $query = $connect->query($sql);
+        $sql = "SELECT idFirma FROM `Firma` WHERE nazev = '$input1' AND název_prezentace = '$input2'";
+        $query = $connect->query($sql);
+        while($row = $query -> fetch_object()) {
+            $id = $row -> idFirma;
+        }
+        echo $id;
+    }
+
 
     echo $input1;
     echo $input2;
     echo $input3;
     if(isset($_POST['potreby'])){
         foreach($_POST['potreby'] as $potreba){
-            echo($potreba);
+            switch($potreba) {
+                case "ruka":
+                    $sql = "INSERT INTO Firma_has_potřeby (Firma_idFirma, potřeby_idpotřeby) VALUES ($id, 1)";
+                    $query = $connect->query($sql);
+                    break;
+                case "projektor":
+                    $sql = "INSERT INTO Firma_has_potřeby (Firma_idFirma, potřeby_idpotřeby) VALUES ($id, 2)";
+                    $query = $connect->query($sql);
+                    break;
+                case "audio":
+                    $sql = "INSERT INTO Firma_has_potřeby (Firma_idFirma, potřeby_idpotřeby) VALUES ($id, 3)";
+                    $query = $connect->query($sql);
+                    break;
+            }
         }
     }
+
+    if(isset($_POST['obory'])){
+        foreach($_POST['obory'] as $obor){
+            switch($obor) {
+                case "V":
+                    $sql = "INSERT INTO Firma_has_obory (Firma_idFirma, obory_idobory) VALUES ($id, 1)";
+                    $query = $connect->query($sql);
+                    break;
+                case "S":
+                    $sql = "INSERT INTO Firma_has_obory (Firma_idFirma, obory_idobory) VALUES ($id, 2)";
+                    $query = $connect->query($sql);
+                    break;
+            }
+        }
+    }
+
+    
+
+
 
     $connect->close();
 
@@ -56,11 +96,11 @@
             </div>
             <div class="txt_field">
                 <label>Název prezentace:</label>
-                <input type = "text" placeholder="Název prezentace" name="nazevPrezentace" required>
+                <input type = "text" placeholder="Název prezentace" name="název_prezentace" required>
             </div>
             <div class="txt_field">
                 <label>O firmě:</label>
-                <input type = "text" placeholder="Informace o firmě" name="oFirme" required>
+                <input type = "text" placeholder="Informace o firmě" name="o_firmě" required>
             </div>
             <div class = "dropdown">
                 <input type="button" value="Vybrat potřeby" class="dropbtn">
@@ -74,8 +114,8 @@
             <div class = "dropdown">
                 <input type="button" value="Vybrat obor" class="dropbtn">
                 <div class="dropdown_content">
-                    <label for="V">Informační technologie</label> <input type="checkbox" id="V"> <br>
-                    <label for="S">Sociální činnost</label> <input type="checkbox" id="S">
+                    <label for="V">Informační technologie</label> <input type="checkbox" id="V" name="obory[0]" value="V"> <br>
+                    <label for="S">Sociální činnost</label> <input type="checkbox" id="S" name="obory[1]" value="S">
                     
                 </div>
             </div>
