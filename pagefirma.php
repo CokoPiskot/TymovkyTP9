@@ -1,6 +1,6 @@
 <?php
 
-    $connect = new mysqli("localhost", "2009010541", "ab0lpiDD", "2009010541") or die("Chyba - nepodařilo se načíst db");
+    $connect = new mysqli("localhost", "2009010276", "3ddkqc2v", "2009010276") or die("Chyba - nepodařilo se načíst db");
     $connect -> set_charset("UTF8") or die("Chyba -  chyba kodování");
 
 
@@ -62,10 +62,6 @@
         }
     }
 
-    
-
-
-
     $connect->close();
 
 ?>
@@ -83,44 +79,44 @@
 <body>
     <script src="script.js"></script>
     <div class = "sidebar">
-            <input type="button" value="Zobrazit firmy" class="side_button" href="main.php">
-            <input type="button" value="Bloky firem" class="side_button">
-            <input type="button" value="Přidat firmu" class="side_button" href="pageFirma.html">
+        <a href="zobrazeniFirem.php"><button type="button" class="side_button">Zobrazit firmy</button></a>
+        <a href="zobrazeniBloku.php"><button type="button" class="side_button" >Bloky firem</button></a>
+        <a href="pagefirma.php"><button type="button"  class="side_button" >Přidat firmu</button></a>
     </div>
     <div class="center">
-        <form method="POST">
+        <form method="post">
             <h2>Přidání firmy</h2>
             <div class="txt_field">
                 <label>Zadejte název firmy:</label>
-                <input type = "text" placeholder="Název firmy" name="nazevFirmy" required>
+                <input type = "text" placeholder="Název firmy" required>
             </div>
             <div class="txt_field">
                 <label>Název prezentace:</label>
-                <input type = "text" placeholder="Název prezentace" name="název_prezentace" required>
+                <input type = "text" placeholder="Příjmení" required>
             </div>
             <div class="txt_field">
                 <label>O firmě:</label>
-                <input type = "text" placeholder="Informace o firmě" name="o_firmě" required>
+                <input type = "text" placeholder="Informace o firmě" required>
             </div>
             <div class = "dropdown">
                 <input type="button" value="Vybrat potřeby" class="dropbtn">
                 <div class="dropdown_content">
-                    <label for="ruka">Robotická ruka</label> <input type="checkbox" id="ruka" name="potreby[0]" value="ruka"> <br>
-                    <label for="projektor">Projektor</label> <input type="checkbox" id="projektor" name="potreby[1]" value="projektor"> <br>
-                    <label for="audio">Ozvučení</label> <input type="checkbox" id="audio" name="potreby[2]" value="audio"> <br>
+                    <label for="ruka">Robotická ruka</label> <input type="checkbox" id="ruka"> <br>
+                    <label for="projektor">Projektor</label> <input type="checkbox" id="projektor"> <br>
+                    <label for="audio">Ozvučení</label> <input type="checkbox" id="audio"> <br>
                     
                 </div>
             </div>
             <div class = "dropdown">
                 <input type="button" value="Vybrat obor" class="dropbtn">
                 <div class="dropdown_content">
-                    <label for="V">Informační technologie</label> <input type="checkbox" id="V" name="obory[0]" value="V"> <br>
-                    <label for="S">Sociální činnost</label> <input type="checkbox" id="S" name="obory[1]" value="S">
+                    <label for="V">Informační technologie</label> <input type="checkbox" id="V"> <br>
+                    <label for="S">Sociální činnost</label> <input type="checkbox" id="S">
                     
                 </div>
             </div>
             <div>
-                <input type="submit" value="Přidat" class="login_btn" onclick=location.href="">
+                <input type="button" value="Přidat" class="login_btn" onclick=location.href="">
             </div>
     </div>
 
