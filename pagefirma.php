@@ -81,7 +81,7 @@
     <div class = "sidebar">
         <a href="zobrazeniFirem.php"><button type="button" class="side_button">Zobrazit firmy</button></a>
         <a href="zobrazeniBloku.php"><button type="button" class="side_button" >Bloky firem</button></a>
-        <a href="pagefirma.php"><button type="button"  class="side_button" >Přidat firmu</button></a>
+        <a href="pagefirma.php"><button type="button"  class="side_button_chosen" >Přidat firmu</button></a>
     </div>
     <div class="center">
         <form method="post">

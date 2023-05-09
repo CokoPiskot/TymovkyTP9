@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="post" action="admin_login.php">
             <h2>Den firem přihlášení (admin)</h2>
             <div class="txt_field">
-                <label for="username">Zadejte Váš E-mail:</label>
-                <input type = "text" placeholder="E-mail" id="username" name="username" required>
+                <label for="username">Zadejte Vaše uživatelské jméno:</label>
+                <input type = "text" placeholder="Uživatelské jméno" id="username" name="username" required>
             </div>
 
             <div class="txt_field">

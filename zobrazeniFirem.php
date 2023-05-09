@@ -21,7 +21,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="pageFirma.css">
+    <link rel="stylesheet" href="zobrazeniFirem.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,12 +30,41 @@
 <body>
     <script src="script.js"></script>
     <div class = "sidebar">
-        <a href="zobrazeniFirem.php"><button type="button" class="side_button">Zobrazit firmy</button></a>
+        <a href="zobrazeniFirem.php"><button type="button" class="side_button_chosen">Zobrazit firmy</button></a>
         <a href="zobrazeniBloku.php"><button type="button" class="side_button" >Bloky firem</button></a>
         <a href="pagefirma.php"><button type="button"  class="side_button" >Přidat firmu</button></a>
     </div>
-    <div class="center">
-        <h1>Zobrazeni firem</h1>
+    <div class="container">
+        <div class="firma">
+            <label>Policie ČR</label>
+            <button type="button">Smazat</button>
+            <button type="button">Úpravy</button>
+        </div>
+        <div class="firma">
+            <label>Microsoft</label>
+            <button type="button">Smazat</button>
+            <button type="button">Úpravy</button>
+        </div>
+        <div class="firma">
+            <label>Kyndryl</label>
+            <button type="button">Smazat</button>
+            <button type="button">Úpravy</button>
+        </div>
+        <div class="firma">
+            <label>Apple</label>
+            <button type="button">Smazat</button>
+            <button type="button">Úpravy</button>
+        </div>
+        <div class="firma">
+            <label>SpaceX</label>
+            <button type="button">Smazat</button>
+            <button type="button">Úpravy</button>
+        </div>
+        <div class="firma">
+            <label>Notino</label>
+            <button type="button">Smazat</button>
+            <button type="button">Úpravy</button>
+        </div>
     </div>
 </body>
 </html>

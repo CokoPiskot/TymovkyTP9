@@ -50,6 +50,10 @@ form .txt_field {
     outline: none;
 }
 
+.txt_field label {
+    font-size: 18px;
+}
+
 .dropbtn {
     width: 100%;
     background-color: #7CB9E8;
