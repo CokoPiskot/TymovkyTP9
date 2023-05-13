@@ -2,38 +2,41 @@
 -- Fri May 12 19:25:06 2023
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
+-- nahraďte <cislodb> jmenem databaze
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema <cislodb>
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema <cislodb>
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `<cislodb>` DEFAULT CHARACTER SET utf8 ;
+USE `<cislodb>` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`blok`
+-- Table `<cislodb>`.`blok`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`blok` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Blok` ;
+DROP TABLE IF EXISTS `<cislodb>`.`blok` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`blok` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`blok` (
   `idBlok` INT NOT NULL,
   PRIMARY KEY (`idBlok`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`student`
+-- Table `<cislodb>`.`student`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`student` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Student` ;
+DROP TABLE IF EXISTS `<cislodb>`.`student` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`student` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`student` (
   `idStudent` INT NOT NULL AUTO_INCREMENT,
   `krestniJmeno` VARCHAR(45) NOT NULL,
   `prijmeni` VARCHAR(45) NOT NULL,
@@ -42,21 +45,22 @@ CREATE TABLE IF NOT EXISTS `mydb`.`student` (
   `Blok_idBlok` INT NOT NULL,
   `heslo` VARCHAR(45) NULL,
   PRIMARY KEY (`idStudent`, `Blok_idBlok`),
-  INDEX `fk_Student_Blok_idx` (`Blok_idBlok` ASC) VISIBLE,
+  INDEX `fk_Student_Blok_idx` (`Blok_idBlok` ASC),
   CONSTRAINT `fk_Student_Blok`
     FOREIGN KEY (`Blok_idBlok`)
-    REFERENCES `mydb`.`blok` (`idBlok`)
+    REFERENCES `<cislodb>`.`blok` (`idBlok`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`ucebna`
+-- Table `<cislodb>`.`ucebna`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`ucebna` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Ucebna` ;
+DROP TABLE IF EXISTS `<cislodb>`.`ucebna` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`ucebna` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`ucebna` (
   `idUcebna` INT NOT NULL AUTO_INCREMENT,
   `cisloUcebny` VARCHAR(45) NOT NULL,
   `kapacity` INT NOT NULL,
@@ -65,57 +69,59 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`firma`
+-- Table `<cislodb>`.`firma`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`firma` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma` ;
+DROP TABLE IF EXISTS `<cislodb>`.`firma` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`firma` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`firma` (
   `idFirma` INT NOT NULL AUTO_INCREMENT,
   `nazev` VARCHAR(45) NOT NULL,
   `Ucebna_idUcebna` INT NULL,
   `oFirme` VARCHAR(1000) NULL,
   `nazevPrezentace` VARCHAR(1000) NULL,
   PRIMARY KEY (`idFirma`),
-  INDEX `fk_Firma_Ucebna1_idx` (`Ucebna_idUcebna` ASC) VISIBLE,
+  INDEX `fk_Firma_Ucebna1_idx` (`Ucebna_idUcebna` ASC),
   CONSTRAINT `fk_Firma_Ucebna1`
     FOREIGN KEY (`Ucebna_idUcebna`)
-    REFERENCES `mydb`.`ucebna` (`idUcebna`)
+    REFERENCES `<cislodb>`.`ucebna` (`idUcebna`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`firmaHasBlok`
+-- Table `<cislodb>`.`firmaHasBlok`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`firmaHasBlok` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma_has_Blok` ;
+DROP TABLE IF EXISTS `<cislodb>`.`firmaHasBlok` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`firmaHasBlok` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`firmaHasBlok` (
   `Firma_idFirma` INT NOT NULL,
   `Blok_idBlok` INT NOT NULL,
   `hodina` INT NULL,
   PRIMARY KEY (`Firma_idFirma`, `Blok_idBlok`),
-  INDEX `fk_Firma_has_Blok_Blok1_idx` (`Blok_idBlok` ASC) VISIBLE,
-  INDEX `fk_Firma_has_Blok_Firma1_idx` (`Firma_idFirma` ASC) VISIBLE,
+  INDEX `fk_Firma_has_Blok_Blok1_idx` (`Blok_idBlok` ASC),
+  INDEX `fk_Firma_has_Blok_Firma1_idx` (`Firma_idFirma` ASC),
   CONSTRAINT `fk_Firma_has_Blok_Firma1`
     FOREIGN KEY (`Firma_idFirma`)
-    REFERENCES `mydb`.`firma` (`idFirma`)
+    REFERENCES `<cislodb>`.`firma` (`idFirma`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Firma_has_Blok_Blok1`
     FOREIGN KEY (`Blok_idBlok`)
-    REFERENCES `mydb`.`blok` (`idBlok`)
+    REFERENCES `<cislodb>`.`blok` (`idBlok`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`su`
+-- Table `<cislodb>`.`su`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`su` ;
+DROP TABLE IF EXISTS `<cislodb>`.`su` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`su` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`su` (
   `idsu` INT NOT NULL,
   `login` VARCHAR(45) NULL,
   `heslo` VARCHAR(45) NULL,
@@ -124,11 +130,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`zarizeni`
+-- Table `<cislodb>`.`zarizeni`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`zarizeni` ;
+DROP TABLE IF EXISTS `<cislodb>`.`zarizeni` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`zarizeni` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`zarizeni` (
   `idpotreby` INT NOT NULL,
   `jméno` VARCHAR(45) NULL,
   PRIMARY KEY (`idpotreby`))
@@ -136,59 +142,63 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`firmaHasPotreby`
+-- Table `<cislodb>`.`firmaHasPotreby`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`firmaHasPotreby` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma_has_potřeby` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma_has_potreby` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma_has_Potreby` ;
+DROP TABLE IF EXISTS `<cislodb>`.`firmaHasPotreby` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`firmaHasPotreby` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`firmaHasPotreby` (
   `firma_idfirma` INT NOT NULL,
   `potreby_idpotreby` INT NOT NULL,
   PRIMARY KEY (`firma_idfirma`, `potreby_idpotreby`),
-  INDEX `fk_Firma_has_potřeby_potřeby1_idx` (`potreby_idpotreby` ASC) VISIBLE,
-  INDEX `fk_Firma_has_potřeby_Firma1_idx` (`firma_idfirma` ASC) VISIBLE,
+  INDEX `fk_Firma_has_potřeby_potřeby1_idx` (`potreby_idpotreby` ASC),
+  INDEX `fk_Firma_has_potřeby_Firma1_idx` (`firma_idfirma` ASC),
   CONSTRAINT `fk_Firma_has_potřeby_Firma1`
     FOREIGN KEY (`firma_idfirma`)
-    REFERENCES `mydb`.`firma` (`idFirma`)
+    REFERENCES `<cislodb>`.`firma` (`idFirma`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Firma_has_potřeby_potřeby1`
     FOREIGN KEY (`potreby_idpotreby`)
-    REFERENCES `mydb`.`zarizeni` (`idpotreby`)
+    REFERENCES `<cislodb>`.`zarizeni` (`idpotreby`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`ucebnaHasVybaveni`
+-- Table `<cislodb>`.`ucebnaHasVybaveni`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`ucebnaHasVybaveni` ;
+DROP TABLE IF EXISTS `<cislodb>`.`vybavení` ;
+DROP TABLE IF EXISTS `<cislodb>`.`ucebnaHasVybaveni` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`ucebnaHasVybaveni` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`ucebnaHasVybaveni` (
   `Ucebna_idUcebna` INT NOT NULL,
   `potreby_idpotreby` INT NOT NULL,
   PRIMARY KEY (`Ucebna_idUcebna`, `potreby_idpotreby`),
-  INDEX `fk_Ucebna_has_potřeby_potřeby1_idx` (`potreby_idpotreby` ASC) VISIBLE,
-  INDEX `fk_Ucebna_has_potřeby_Ucebna1_idx` (`Ucebna_idUcebna` ASC) VISIBLE,
+  INDEX `fk_Ucebna_has_potřeby_potřeby1_idx` (`potreby_idpotreby` ASC),
+  INDEX `fk_Ucebna_has_potřeby_Ucebna1_idx` (`Ucebna_idUcebna` ASC),
   CONSTRAINT `fk_Ucebna_has_potřeby_Ucebna1`
     FOREIGN KEY (`Ucebna_idUcebna`)
-    REFERENCES `mydb`.`ucebna` (`idUcebna`)
+    REFERENCES `<cislodb>`.`ucebna` (`idUcebna`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Ucebna_has_potřeby_potřeby1`
     FOREIGN KEY (`potreby_idpotreby`)
-    REFERENCES `mydb`.`zarizeni` (`idpotreby`)
+    REFERENCES `<cislodb>`.`zarizeni` (`idpotreby`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`obory`
+-- Table `<cislodb>`.`obory`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`obory` ;
+DROP TABLE IF EXISTS `<cislodb>`.`obory` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`obory` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`obory` (
   `idobory` INT NOT NULL,
   `zkratka` VARCHAR(5) NULL,
   `plnyNazev` VARCHAR(45) NULL,
@@ -197,24 +207,26 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`firmaHasObory`
+-- Table `<cislodb>`.`firmaHasObory`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`firmaHasObory` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma_has_obory` ;
+DROP TABLE IF EXISTS `<cislodb>`.`Firma_has_Obory` ;
+DROP TABLE IF EXISTS `<cislodb>`.`firmaHasObory` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`firmaHasObory` (
+CREATE TABLE IF NOT EXISTS `<cislodb>`.`firmaHasObory` (
   `Firma_idFirma` INT NOT NULL,
   `obory_idobory` INT NOT NULL,
   PRIMARY KEY (`Firma_idFirma`, `obory_idobory`),
-  INDEX `fk_Firma_has_obory_obory1_idx` (`obory_idobory` ASC) VISIBLE,
-  INDEX `fk_Firma_has_obory_Firma1_idx` (`Firma_idFirma` ASC) VISIBLE,
+  INDEX `fk_Firma_has_obory_obory1_idx` (`obory_idobory` ASC),
+  INDEX `fk_Firma_has_obory_Firma1_idx` (`Firma_idFirma` ASC),
   CONSTRAINT `fk_Firma_has_obory_Firma1`
     FOREIGN KEY (`Firma_idFirma`)
-    REFERENCES `mydb`.`firma` (`idFirma`)
+    REFERENCES `<cislodb>`.`firma` (`idFirma`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Firma_has_obory_obory1`
     FOREIGN KEY (`obory_idobory`)
-    REFERENCES `mydb`.`obory` (`idobory`)
+    REFERENCES `<cislodb>`.`obory` (`idobory`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -225,24 +237,24 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `mydb`.`zarizeni`
+-- Data for table `<cislodb>`.`zarizeni`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`zarizeni` (`idpotreby`, `jméno`) VALUES (1, 'Robotická ruka');
-INSERT INTO `mydb`.`zarizeni` (`idpotreby`, `jméno`) VALUES (2, 'Projektor');
-INSERT INTO `mydb`.`zarizeni` (`idpotreby`, `jméno`) VALUES (3, 'Ozvučení');
+USE `<cislodb>`;
+INSERT INTO `<cislodb>`.`zarizeni` (`idpotreby`, `jméno`) VALUES (1, 'Robotická ruka');
+INSERT INTO `<cislodb>`.`zarizeni` (`idpotreby`, `jméno`) VALUES (2, 'Projektor');
+INSERT INTO `<cislodb>`.`zarizeni` (`idpotreby`, `jméno`) VALUES (3, 'Ozvučení');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `mydb`.`obory`
+-- Data for table `<cislodb>`.`obory`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydb`;
-INSERT INTO `mydb`.`obory` (`idobory`, `zkratka`, `plnyNazev`) VALUES (1, 'V', 'Informační technologie');
-INSERT INTO `mydb`.`obory` (`idobory`, `zkratka`, `plnyNazev`) VALUES (2, 'S', 'Sociálněsprávní činnost');
+USE `<cislodb>`;
+INSERT INTO `<cislodb>`.`obory` (`idobory`, `zkratka`, `plnyNazev`) VALUES (1, 'V', 'Informační technologie');
+INSERT INTO `<cislodb>`.`obory` (`idobory`, `zkratka`, `plnyNazev`) VALUES (2, 'S', 'Sociálněsprávní činnost');
 
 COMMIT;
 
